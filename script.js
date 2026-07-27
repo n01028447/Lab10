@@ -21,7 +21,7 @@ class Grocery {
     }
 }
 
-let soap = new Grocery("Soap", 2, 3);
+const soap = new Grocery("Soap", 2, 3);
 soap.toString();
 
 
@@ -45,8 +45,11 @@ class Perishalbe extends Grocery {
     }
 }
 
-let tuna = new Perishalbe("Tuna", 5, 2, "Feb 01 2027");
+const tuna = new Perishalbe("Tuna", 5, 2, "Feb 01 2027");
+const sardine = new Perishalbe("Sardine", 2, 8, "May 30 2027");
+
 tuna.speak();
+sardine.speak();
 
 
 
@@ -112,3 +115,89 @@ console.log(Perishalbe3.applyDiscount(pasta, 0.1));
 
 lentil.speak();
 console.log(Perishalbe3.applyDiscount(lentil, 0.5));
+
+
+//Part 4: Store Management
+
+console.log(" ");
+console.log(" ");
+console.log(" ");
+console.log("Part 4: Store Management");
+
+
+class Grocery4 {
+    constructor(name, price, number) {
+        this.name = name;
+        this.price = price;
+        this.number = number;
+    }
+
+    getTotalVAlue() {
+        return this.price * this.number;
+    }
+
+    toString() {
+        console.log(`Product: ${this.name}, Price: $${this.price}, Quantity: ${this.number}, Total: $${this.getTotalVAlue()}`);
+    }
+
+    static applyDiscount(grocery, discount) {
+        return `${discount * 100}% discount price: $${grocery.price * (1 - discount)}`;
+    }
+
+    static inventory = 0;
+    static addProduct(grocery) {
+        Grocery4.inventory = Grocery4.inventory + grocery.number
+    }
+
+    static getInventoryValue() {
+        console.log(`Non-perishable inventory: ${Grocery4.inventory}`);
+    }
+
+    static findProductByName(name) {
+        console.log(`Product Name: ${name.name}, Price: $${name.price}, Number: ${name.number}`);
+    }
+
+}
+
+const sponge = new Grocery4("Sponge", 3.5, 2);
+const detergent = new Grocery4("Detergent", 15, 3);
+
+Grocery4.addProduct(sponge);
+Grocery4.addProduct(detergent);
+Grocery4.addProduct(detergent);
+Grocery4.getInventoryValue();
+
+
+
+class Perishalbe4 extends Grocery4 {
+
+    constructor(name, price, number, expirationDate) {
+        super(name, price, number);
+        this.expirationDate = expirationDate;
+    }
+
+    speak() {
+        console.log(`Product: ${this.name}, Expiration Date: ${this.expirationDate}, Price: $${this.price}, Quantity: ${this.number}, Total: $${this.getTotalVAlue()}`);
+    }
+
+    static getInventoryValue() {
+        console.log(`Total inventory: ${Perishalbe4.inventory}`);
+    }
+}
+
+const beans = new Perishalbe4("Beans", 5.5, 6, "Oct 31, 2029");
+const rice = new Perishalbe4("Rice", 7.5, 1, "Dec 12, 2028");
+
+Perishalbe4.addProduct(beans);
+Perishalbe4.addProduct(beans);
+Perishalbe4.addProduct(rice);
+Perishalbe4.addProduct(rice);
+Perishalbe4.addProduct(rice);
+Perishalbe4.getInventoryValue();
+
+try {
+    Grocery4.findProductByName(rice);
+    Grocery4.findProductByName(cream);
+} catch {
+    console.log("Product not found!");
+}
