@@ -1,4 +1,4 @@
-//Part 1: Setting Up Classes
+//Part 3: Static Methods and Properties
 class Grocery1 {
     constructor(name, price, number) {
         this.name = name;
