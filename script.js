@@ -201,3 +201,84 @@ try {
 } catch {
     console.log("Product not found!");
 }
+
+//Part 5: Testing the System
+
+console.log(" ");
+console.log(" ");
+console.log(" ");
+console.log("Part 5: Testing the System");
+
+
+class Groceries {
+    constructor(name, price, number) {
+        this.name = name;
+        this.price = price;
+        this.number = number;
+    }
+
+    getTotalVAlue() {
+        return this.price * this.number;
+    }
+
+    toString() {
+        console.log(`Product: ${this.name}, Price: $${this.price}, Quantity: ${this.number}, Total: $${this.getTotalVAlue()}`);
+    }
+
+    static applyDiscount(grocery, discount) {
+        return `${discount * 100}% discount price: $${grocery.price * (1 - discount)}`;
+    }
+
+    static inventory = 0;
+    static cost = 0;
+    static addProduct(grocery) {
+        Groceries.inventory = Groceries.inventory + grocery.number
+        Groceries.cost = Groceries.cost + (grocery.price * grocery.number)
+    }
+
+    static getInventoryValue() {
+        console.log(`Total inventory: ${Groceries.inventory}`);
+        console.log(`Total cost: $${Groceries.cost}`);
+    }
+
+    static findProductByName(name) {
+        console.log(`Product Name: ${name.name}, Price: $${name.price}, Number: ${name.number}`);
+    }
+
+}
+
+
+class Perishalbes extends Groceries {
+
+    constructor(name, price, number, expirationDate) {
+        super(name, price, number);
+        this.expirationDate = expirationDate;
+    }
+
+    speak() {
+        console.log(`Product: ${this.name}, Expiration Date: ${this.expirationDate}, Price: $${this.price}, Quantity: ${this.number}, Total: $${this.getTotalVAlue()}`);
+    }
+}
+
+const paperTowel = new Groceries("Paper Towel", 6.5, 5);
+const bleach = new Groceries("Bleach", 12.5, 3);
+const borax = new Groceries("Borax", 8.5, 2);
+
+const salmon = new Perishalbes("Salmon", 20.5, 7, "Aug 31, 2026");
+const oatmeal = new Perishalbes("Oatmeal", 5.5, 1, "Dec 12, 2028");
+
+Groceries.addProduct(paperTowel);
+Groceries.addProduct(bleach);
+Groceries.addProduct(borax);
+Perishalbes.addProduct(salmon);
+Perishalbes.addProduct(oatmeal);
+
+Groceries.getInventoryValue();
+
+try {
+    Groceries.findProductByName(paperTowel);
+    Perishalbes.findProductByName(oatmeal);
+    Perishalbes.findProductByName(cream);
+} catch {
+    console.log("Product not found!");
+}
