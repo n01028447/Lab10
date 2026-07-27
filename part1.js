@@ -1,3 +1,4 @@
+//Part 1: Setting Up Classes
 class Grocery {
     constructor(name, price, number) {
         this.name = name;
@@ -17,9 +18,9 @@ class Grocery {
 let soap = new Grocery("Soap", 2, 3);
 soap.toString();
 
-let soap = new Grocery("Soap", 2, 3);
-soap.toString();
 
+
+//Part 2: Adding Inheritance
 class Perishalbe extends Grocery {
 
     constructor(name, price, number, expirationDate) {
@@ -32,6 +33,8 @@ class Perishalbe extends Grocery {
     }
 }
 
-let tuna = new Perishalbe("Tuna", 5, 2, "Feb, 01 2027")
+let tuna = new Perishalbe("Tuna", 5, 2, "Feb, 01 2027");
+let pasta = new Perishalbe("Pasta", 7, 3, "Oct, 31 2029");
 tuna.speak();
+pasta.speak();
 
