@@ -1,5 +1,5 @@
 //Part 1: Setting Up Classes
-class Grocery {
+class Grocery1 {
     constructor(name, price, number) {
         this.name = name;
         this.price = price;
@@ -19,14 +19,14 @@ class Grocery {
     }
 }
 
-let soap = new Grocery("Soap", 2, 3);
-let shampoo = new Grocery("Shampoo", 9, 2);
+let soap = new Grocery1("Soap", 2, 3);
+let shampoo = new Grocery1("Shampoo", 9, 2);
 
 soap.toString();
-console.log(`Discount price: $${Grocery.applyDiscount(soap.price, 0.1)}`);
+console.log(`Discount price: $${Grocery1.applyDiscount(soap.price, 0.1)}`);
 
 shampoo.toString();
-console.log(`Discount price: $${Grocery.applyDiscount(shampoo.price, 0.2)}`);
+console.log(`Discount price: $${Grocery1.applyDiscount(shampoo.price, 0.2)}`);
 
 
 
