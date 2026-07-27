@@ -45,7 +45,7 @@ class Perishalbe extends Grocery {
     }
 }
 
-let tuna = new Perishalbe("Tuna", 5, 2, "Feb, 01 2027");
+let tuna = new Perishalbe("Tuna", 5, 2, "Feb 01 2027");
 tuna.speak();
 
 
@@ -62,6 +62,7 @@ console.log(" ");
 console.log(" ");
 console.log("Part 3: Static Methods and Properties");
 
+
 class Grocery3 {
     constructor(name, price, number) {
         this.name = name;
@@ -77,16 +78,17 @@ class Grocery3 {
         console.log(`Product: ${this.name}, Price: $${this.price}, Quantity: ${this.number}, Total: $${this.getTotalVAlue()}`);
     }
 
-    static applyDiscount(price, discount) {
-        return price * (1 - discount);
+    static applyDiscount(grocery, discount) {
+        return `${discount * 100}% discount price: $${grocery.price * (1 - discount)}`;
     }
+
 }
 
-
-let shampoo = new Grocery3("Shampoo", 9, 2);
+const shampoo = new Grocery3("Shampoo", 12, 2);
 
 shampoo.toString();
-console.log(`Discount price: $${Grocery3.applyDiscount(shampoo.price, 0.2)}`);
+console.log(Grocery3.applyDiscount(shampoo, 0.2));
+
 
 
 class Perishalbe3 extends Grocery3 {
@@ -101,12 +103,12 @@ class Perishalbe3 extends Grocery3 {
     }
 }
 
+const pasta = new Perishalbe3("Pasta", 7, 3, "Oct 31 2029");
+const lentil = new Perishalbe3("Lentil", 6, 5, "Dec 12 2028");
 
-let pasta = new Perishalbe3("Pasta", 7, 3, "Oct 31, 2029");
-let lentil = new Perishalbe3("Lentil", 6, 5, "Dec 12, 2028");
 
 pasta.speak();
-console.log(`Discount price: $${Perishalbe3.applyDiscount(pasta.price, 0.4)}`);
+console.log(Perishalbe3.applyDiscount(pasta, 0.1));
 
 lentil.speak();
-console.log(`Discount price: $${Perishalbe3.applyDiscount(lentil.price, 0.5)}`);
+console.log(Perishalbe3.applyDiscount(lentil, 0.5));
